@@ -1,313 +1,493 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capolavoro - Orientamento Universitario 2025</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* Reset e Variabili in stile Apple */
-        :root {
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --text-secondary: #86868b;
-            --accent: #0071e3;
-            --border-color: rgba(0, 0, 0, 0.08);
-        }
+<title>Capolavoro - Orientamento Universitario 2025 - Guglielmo Menci</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            padding-bottom: 60px;
-        }
+<style>
+/* -----------------------------------------------------------
+   1. RESET E STILI DI BASE - Pulizia e Font
+----------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth; /* Scorrimento fluido */
+}
 
-        /* Navigazione Superiore */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 14px 0;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: -0.1px;
-            z-index: 1000;
-            text-align: center;
-            color: var(--text-main);
-        }
+body {
+    background-color: #050505; /* Sfondo scuro per eleganza e contrasto */
+    color: #e0e0e0; /* Testo chiaro, non bianco puro */
+    line-height: 1.7;
+    overflow-x: hidden; /* Evita scorrimento orizzontale imprevisto */
+}
 
-        /* Container Principale */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+/* Palette Colori e Variabili per consistenza */
+:root {
+    --bg-dark: #050505;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent: #d4af37; /* Oro delicato per accenti istituzionali */
+    --card-bg: rgba(255, 255, 255, 0.03); /* Vetro scuro molto trasparente */
+    --card-border: rgba(255, 255, 255, 0.08);
+    --glass-nav-bg: rgba(10, 10, 10, 0.8);
+}
 
-        /* Hero Section */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 60px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/* -----------------------------------------------------------
+   2. NAVIGAZIONE - Effetto Vetro Sfocato
+----------------------------------------------------------- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--glass-nav-bg);
+    backdrop-filter: blur(20px); /* Sfocatura sfondo forte */
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 18px 40px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    z-index: 1000;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* -----------------------------------------------------------
+   3. HERO SECTION - La Normale come sfondo
+----------------------------------------------------------- */
+.hero {
+    position: relative;
+    height: 100vh; /* Altezza intera finestra */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    color: #fff;
+}
 
-        .hero p {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            letter-spacing: -0.3px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+/* Immagine di sfondo fissa con effetto parallasse */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.35) contrast(1.1); /* Scura e contrastata per il testo */
+    transform: scale(1.05); /* Leggero zoom per effetto parallasse al caricamento */
+    transition: transform 1.5s ease-out;
+}
 
-        /* Immagine di Copertina Grande */
-        .hero-banner {
-            width: 100%;
-            height: 450px;
-            border-radius: 28px;
-            object-fit: cover;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-        }
+/* Contenuto dell'Hero */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    padding: 0 30px;
+}
 
-        /* Layout a Griglia / Sezioni */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
+.hero h1 {
+    font-family: 'Playfair Display', serif; /* Font elegante per il titolo principale */
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #fff 0%, #d0d0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
+.hero p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #eaeaea;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        /* Card in Stile Bento Box */
-        .card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 36px;
-            border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
+.hero-line {
+    height: 1px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    margin: 40px auto;
+}
 
-        .card:hover {
-            transform: translateY(-2px);
-        }
+/* -----------------------------------------------------------
+   4. LAYOUT SEZIONI - Spaziatura e Pulizia
+----------------------------------------------------------- */
+.section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 100px 30px;
+}
 
-        .card-full {
-            grid-column: 1 / -1;
-        }
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
 
-        h2 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin-bottom: 14px;
-            font-weight: 600;
-        }
+/* Linea sotto il titolo */
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+}
 
-        h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
+/* -----------------------------------------------------------
+   5. CARD E CONTENUTI - Effetto Vetro Scuro
+----------------------------------------------------------- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 45px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        p {
-            font-size: 1.05rem;
-            color: #48484a;
-            font-weight: 400;
-            letter-spacing: -0.1px;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+}
 
-        p strong {
-            color: var(--text-main);
-        }
+/* Testo all'interno delle card */
+p {
+    font-size: 1.1rem;
+    color: #d0d0d0;
+    margin-bottom: 0;
+}
 
-        /* Immagini dentro le Card */
-        .card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
+p + p {
+    margin-top: 20px; /* Spaziatura tra paragrafi */
+}
 
-        /* Timeline Modificata in stile Elenco Apple */
-        .timeline-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 10px;
-        }
+strong {
+    color: #fff;
+    font-weight: 600;
+}
 
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            background: #f5f5f7;
-            border-radius: 14px;
-        }
+/* -----------------------------------------------------------
+   6. IMMAGINI AGGIUNTIVE - Stile Professionale
+----------------------------------------------------------- */
+.img-wrap {
+    margin: 60px 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--card-border);
+}
 
-        .time-date {
-            font-weight: 600;
-            font-size: 1rem;
-            min-width: 90px;
-        }
+.img {
+    width: 100%;
+    height: 500px; /* Altezza fissa per consistenza */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
 
-        .badge {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #424245;
-        }
+.img-wrap:hover .img {
+    transform: scale(1.03); /* Leggero zoom all'hover */
+}
 
-        /* Citazione */
-        .quote {
-            font-size: 1.4rem;
-            font-weight: 500;
-            line-height: 1.4;
-            letter-spacing: -0.4px;
-            color: var(--text-main);
-            border-left: 3px solid var(--text-main);
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
+/* -----------------------------------------------------------
+   7. TIMELINE - Design Moderno e Pulito
+----------------------------------------------------------- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    padding-left: 50px;
+}
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 80px 20px 40px;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            max-width: 1000px;
-            margin: 0 auto;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-        }
-    </style>
+/* Linea verticale centrale */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--card-border), #444, var(--card-border));
+}
+
+.event {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* Punto sulla timeline */
+.event::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: 3px solid var(--accent);
+    z-index: 2;
+}
+
+.event h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f0f0f0;
+    border: 1px solid var(--card-border);
+}
+
+/* -----------------------------------------------------------
+   8. QUOTE - Stile Citazione Elegante
+----------------------------------------------------------- */
+.quote-wrap {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+/* Icona virgolette aperta */
+.quote-wrap::before {
+    content: '“';
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(212, 175, 55, 0.3); /* Oro molto trasparente */
+}
+
+.quote {
+    font-style: italic;
+    color: #f0f0f0;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* -----------------------------------------------------------
+   9. FOOTER - Pulito e Sottile
+----------------------------------------------------------- */
+.footer {
+    text-align: center;
+    padding: 80px 30px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--card-border);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer strong {
+    color: #b0b0b0;
+    font-weight: 500;
+}
+
+/* -----------------------------------------------------------
+   10. MEDIA QUERIES - Responsive Design
+----------------------------------------------------------- */
+@media(max-width: 1024px) {
+    .section { padding: 80px 30px; }
+    .hero h1 { font-size: 3.5rem; }
+}
+
+@media(max-width: 768px) {
+    nav { padding: 15px 20px; font-size: 0.85rem; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero p { font-size: 1.2rem; }
+    h2 { font-size: 2.2rem; margin-bottom: 40px; }
+    .card { padding: 30px; }
+    .img { height: 350px; }
+    .timeline { padding-left: 40px; }
+    .timeline::before { left: 15px; }
+    .event::before { left: -32px; width: 14px; height: 14px; }
+}
+
+@media(max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.9rem; }
+    .quote { font-size: 1.1rem; }
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <nav>
-        Capolavoro &middot; Scuola Normale Superiore & Sant’Anna &middot; 2025
-    </nav>
+<nav>
+Capolavoro · SOU 2025 · Guglielmo Menci
+</nav>
 
-    <div class="container">
+<div class="hero">
+<img class="hero-bg"
+src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Piazza_dei_Cavalieri_Pisa_Palazzo_della_Carovana.jpg"
+alt="Palazzo della Carovana, Scuola Normale Superiore di Pisa">
 
-        <div class="hero">
-            <h1>Scuola di Orientamento Universitario 2025</h1>
-            <p>Un’esperienza di eccellenza accademica presso la Scuola Normale Superiore e la Scuola Superiore Sant’Anna di Pisa.</p>
-        </div>
+<div class="hero-content">
+<h1>Scuola di Orientamento Universitario 2025</h1>
+<div class="hero-line"></div>
+<p>
+Un’esperienza di eccellenza accademica presso la Scuola Normale Superiore e la Scuola Superiore Sant’Anna di Pisa.
+</p>
+</div>
+</div>
 
-        <img class="hero-banner" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80" alt="Università ed Eccellenza">
+<main>
 
-        <div class="grid-2">
-            
-            <div class="card">
-                <div>
-                    <h2>Chi sono</h2>
-                    <h3>Il mio profilo</h3>
-                    <p>Mi chiamo <strong>Guglielmo Menci</strong> e frequento il Liceo Scientifico "F. Redi" di Arezzo. Sono profondamente interessato alle discipline scientifiche, alla meccanica e all’ingegneria, ambiti nei quali intendo proseguire il mio futuro percorso universitario.</p>
-                </div>
-            </div>
+<div class="section" id="chi-sono">
+<h2>Chi sono</h2>
 
-            <div class="card">
-                <div>
-                    <h2>L'esperienza</h2>
-                    <h3>Il Contesto</h3>
-                    <p>Dal 24 al 27 giugno 2025 ho partecipato alla Scuola di Orientamento Universitario a Pisa. L’esperienza mi ha permesso di entrare in contatto con un ambiente accademico altamente selettivo e stimolante, approfondendo il mondo della ricerca scientifica.</p>
-                </div>
-            </div>
+<div class="card">
+<p>
+Mi chiamo <strong>Guglielmo Menci</strong> e frequento il Liceo Scientifico "F. Redi" di Arezzo.
+Sono interessato alle discipline scientifiche, alla meccanica e all’ingegneria, ambiti nei quali intendo proseguire il mio percorso universitario.
+</p>
+</div>
 
-            <div class="card">
-                <div>
-                    <h2>Programma</h2>
-                    <h3>Il percorso svolto</h3>
-                    <div class="timeline-container">
-                        <div class="timeline-item">
-                            <span class="time-date">24 Giugno</span>
-                            <span class="badge">Accoglienza e introduzione</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="time-date">25 Giugno</span>
-                            <span class="badge">Lezioni e confronto con docenti</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="time-date">26 Giugno</span>
-                            <span class="badge">Approfondimento scientifico</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="time-date">27 Giugno</span>
-                            <span class="badge">Riflessione e orientamento</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="img-wrap">
+<img class="img"
+src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1600&auto=format&fit=crop"
+alt="Ingegnere meccanico al lavoro su un prototipo">
+</div>
+</div>
 
-            <div class="card">
-                <div>
-                    <h2>Competenze</h2>
-                    <h3>Cosa ho imparato</h3>
-                    <img class="card-image" src="https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=500&q=80" alt="Meccanica e Ingegneria">
-                    <p>Questa esperienza ha strutturato e rafforzato il mio interesse verso l’ingegneria, mostrandomi sul campo il valore del rigore scientifico, dell’innovazione tecnologica e della capacità di risolvere problemi complessi con metodo.</p>
-                </div>
-            </div>
+<div class="section" id="esperienza">
+<h2>L’esperienza</h2>
 
-            <div class="card card-full">
-                <div>
-                    <h2>Visione futura</h2>
-                    <h3>Riflessione personale</h3>
-                    <div class="quote">
-                        “Vivere realtà accademiche di questo livello mi ha permesso di comprendere meglio il valore dello studio, della ricerca e dell’impegno personale.”
-                    </div>
-                    <p>Pur ammirando profondamente il percorso di queste istituzioni, ho maturato la consapevolezza che le mie attitudini siano maggiormente orientate verso un contesto in cui la formazione tecnica si integri direttamente con l’innovazione industriale, l'impresa e le relazioni professionali, rafforzando così il mio interesse verso il <strong>Politecnico di Milano</strong>.</p>
-                </div>
-            </div>
+<div class="card">
+<p>
+Dal 24 al 27 giugno 2025 ho partecipato alla Scuola di Orientamento Universitario promossa dalla Scuola Normale Superiore e dalla Scuola Superiore Sant’Anna di Pisa.
+</p>
+<p>
+L’esperienza mi ha permesso di entrare in contatto con un ambiente accademico altamente selettivo e stimolante, approfondendo il mondo della ricerca scientifica e della formazione universitaria d’eccellenza.
+</p>
+</div>
 
-        </div> </div> <div class="footer">
-        Capolavoro Piattaforma Unica &middot; 2025 &middot; Guglielmo Menci <br><br>
-        Sito web realizzato seguendo le linee guida del design minimale ed accademico.
-    </div>
+<div class="img-wrap">
+<img class="img"
+src="https://piazzadeicavalieri.sns.it/wp-content/uploads/2023/07/Carovana-testata-Tartarelli-SNS-DSC01026-1-854x461.jpg"
+alt="Piazza dei Cavalieri a Pisa con il Palazzo della Carovana">
+</div>
+</div>
+
+<div class="section" id="percorso">
+<h2>Percorso svolto</h2>
+
+<div class="timeline">
+<div class="event">
+<h3>24 Giugno</h3>
+<div class="badge">Accoglienza e introduzione</div>
+</div>
+
+<div class="event">
+<h3>25 Giugno</h3>
+<div class="badge">Lezioni e confronto con docenti</div>
+</div>
+
+<div class="event">
+<h3>26 Giugno</h3>
+<div class="badge">Approfondimento scientifico e ingegneristico</div>
+</div>
+
+<div class="event">
+<h3>27 Giugno</h3>
+<div class="badge">Riflessione e orientamento finale</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="imparato">
+<h2>Cosa ho imparato</h2>
+
+<div class="card">
+<p>
+Questa esperienza ha rafforzato il mio interesse verso l’ingegneria, mostrandomi il valore del rigore scientifico, dell’innovazione e della capacità di affrontare problemi complessi con metodo e lucidità.
+</p>
+</div>
+
+<div class="img-wrap">
+<img class="img"
+src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop"
+alt="Circuito elettronico avanzato e microchip">
+</div>
+</div>
+
+<div class="section" id="riflessione">
+<h2>Riflessione personale</h2>
+
+<div class="card">
+<div class="quote-wrap">
+<p class="quote">
+
+
+<p>
+Visitare e vivere, anche solo per alcuni giorni, realtà accademiche di eccellenza come la Scuola Normale Superiore e la Scuola Superiore Sant’Anna mi ha permesso di comprendere meglio il valore dello studio, della ricerca e dell’impegno personale. Questa esperienza rappresenta una tappa importante nel mio percorso di orientamento verso gli studi di ingegneria.”
+Allo stesso tempo, questa esperienza mi ha portato a riflettere in modo più consapevole sul mio futuro. Pur ammirando profondamente il percorso accademico e di ricerca di queste istituzioni, ho maturato la convinzione che le mie attitudini siano maggiormente orientate verso un contesto in cui la formazione tecnica si integri con innovazione, impresa e relazioni professionali, rafforzando il mio interesse verso il Politecnico di Milano.
+</p>
+</div>
+
+<div class="img-wrap">
+<img class="img"
+src="https://image.jimcdn.com/app/cms/image/transf/none/path/sf63059cf0e80ccf2/image/i7001d23fa637ce9c/version/1593436367/image.jpg"
+alt="Vista moderna di Milano, simbolo di innovazione e futuro">
+</div>
+</div>
+
+</main>
+
+<footer class="footer">
+<p>Capolavoro Piattaforma Unica · 2025</p>
+<p>Presentazione Esame di Maturità di <strong>Guglielmo Menci</strong></p>
+</footer>
+
+<script>
+// Semplice effetto parallasse per l'immagine hero allo scroll
+window.addEventListener('scroll', function() {
+    const distance = window.scrollY;
+    const heroBg = document.querySelector('.hero-bg');
+    heroBg.style.transform = `translateY(${distance * 0.5}px) scale(1.05)`;
+});
+</script>
 
 </body>
 </html>
